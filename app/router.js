@@ -13,6 +13,7 @@ const router = Router.extend({
 router.map(function() {
   this.route('/');
   this.route('feed');
+  this.route('profile', { path: '/profile/:id' });
 });
 
 export default router;

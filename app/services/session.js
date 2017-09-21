@@ -1,8 +1,9 @@
 import Ember from 'ember';
+
 const {
-  Controller
+  Service
 } = Ember;
 
-export default Controller.extend({
+export default Service.extend({
   currentUser: null
 });

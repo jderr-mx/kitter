@@ -32,19 +32,13 @@ export default Route.extend({
       post.save();
     });
     // setup currentUser to mock a session user
+    let currentUser;
     let filterdUsers = users.filterBy('userName', 'RightMeow');
     if (!filterdUsers.length) {
-
-      let currentUser = get(this, 'store').createRecord('user', {
-        profilePic: 'han-solo-cat-meme.jpg',
-        firstName: 'Officer',
-        lastName: 'Rabbit',
-        userName: 'RightMeow',
-        posts: []
-      });
-      currentUser.save();
-      this.controllerFor('application').set('currentUser', currentUser);
+      currentUser = get(this, 'store').findRecord('user', 6);
+    } else {
+      currentUser = filterdUsers[0];
     }
-
+    set(this, 'session.currentUser', currentUser);
   })
 });

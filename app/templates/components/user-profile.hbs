@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="card rounded mb-5" style="width: 40rem;">
+      <div class="card-body">
+        <img class="card-img-top rounded mb-2" src="{{user.profilePic}}" style=" width: 100%;">
+        <div class="card-block">
+          <p>
+            {{#unless readOnly}}
+            <h5 class="card-title clearfix">
+              <span class="float-right">
+                {{#if isEditing}}
+                  <span class="text-muted">{{fa-icon "edit"}}Edit</span>
+                {{else}}
+                  <a href="#" {{action "editProfile"}}>{{fa-icon "edit"}}Edit</a>
+                {{/if}}
+              </span>
+            </h5>
+            {{/unless}}
+          </p>
+            <div class="clearfix">
+            <div class="input-group">
+              <span class="input-group-addon">User Name:</span>
+              {{input class="form-control" value=user.userName readonly=true}}
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon">First Name:</span>
+              {{input class="form-control" value=user.firstName readonly=isReadOnly}}
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon">Last Name:</span>
+              {{input class="form-control" value=user.lastName readonly=isReadOnly}}
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"># of posts:</span>
+              <span class="form-control" style="background-color: #e9ecef;">{{user.posts.length}}</span>
+            </div>
+            {{#if isEditing}}
+              <div class="mt-2 float-right">
+                <button {{action "saveProfile"}} type="button" class="btn btn-outline-primary">Save</button>
+                <button {{action "cancelEditProfile"}} type="button" class="btn btn-outline-danger">Cancel</button>
+              </div>
+            {{/if}}
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

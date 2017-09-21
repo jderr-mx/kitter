@@ -39,6 +39,14 @@ export default [
     lastName: 'Thurman',
     userName: 'TheBride',
     posts: []
+  },
+  {
+    id: 6,
+    profilePic: '/profile-pic.jpg',
+    firstName: 'Officer',
+    lastName: 'Rabbit',
+    userName: 'RightMeow',
+    posts: []
   }
 
 ];
