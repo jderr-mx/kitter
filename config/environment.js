@@ -3,7 +3,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'developer-journal',
+    modulePrefix: 'kitter',
     environment,
     rootURL: '/',
     locationType: 'auto',

@@ -1,5 +1,9 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<div class="container">
+  <div class="row">
+    {{currentUser.userName}}
+  </div>
+  <div class="row mb-5">
+    <img src="logo.png"/>
+  </div>
+  {{outlet}}
+</div>
