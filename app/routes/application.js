@@ -15,6 +15,7 @@ export default Route.extend({
 
   beforeModelTask: task(function* () {
     // setup posts hasMany is users because mirage doesn't like a mix of fixtures and factories
+    /**
     let posts = get(this, 'store').findAll('post');
     let users = get(this, 'store').findAll('user');
     yield posts;
@@ -31,7 +32,10 @@ export default Route.extend({
       set(post, 'user', user);
       post.save();
     });
+    */
     // setup currentUser to mock a session user
+    let users = get(this, 'store').findAll('user');
+    yield users;
     let currentUser;
     let filterdUsers = users.filterBy('userName', 'RightMeow');
     if (!filterdUsers.length) {

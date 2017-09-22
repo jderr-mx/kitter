@@ -5,48 +5,42 @@ export default [
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Kitty',
     lastName: 'Purry',
-    userName: 'leftsharkfan',
-    posts: []
+    userName: 'leftsharkfan'
   },
   {
     id: 2,
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Cat',
     lastName: 'Damon',
-    userName: 'IamJasonBourne',
-    posts: []
+    userName: 'IamJasonBourne'
   },
   {
     id: 3,
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Dalai',
     lastName: 'Clawma',
-    userName: 'BuddahMeow',
-    posts: []
+    userName: 'BuddahMeow'
   },
   {
     id: 4,
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Fuzz',
     lastName: 'Aldrin',
-    userName: 'ToInfinityAndMeow',
-    posts: []
+    userName: 'ToInfinityAndMeow'
   },
   {
     id: 5,
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Puma',
     lastName: 'Thurman',
-    userName: 'TheBride',
-    posts: []
+    userName: 'TheBride'
   },
   {
     id: 6,
     profilePic: '/profile-pic.jpg',
     firstName: 'Officer',
     lastName: 'Rabbit',
-    userName: 'RightMeow',
-    posts: []
+    userName: 'RightMeow'
   }
 
 ];

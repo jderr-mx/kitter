@@ -5,26 +5,20 @@
         <img src="/logo-small.png">
         {{/link-to}}
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            {{#link-to "index" class="nav-link"}}
+        <div class="navbar-nav">
+            {{#link-to "index" class="nav-item nav-link"}}
               Home
               {{/link-to}}
-          </li>
-          <li class="nav-item">
-            {{#link-to "feed" class="nav-link"}}
+            {{#link-to "feed" class="nav-item nav-link"}}
               Feed
               {{/link-to}}
-          </li>
-        </ul>
-        <ul class="navbar-nav float-right">
-          <li class="nav-item">
-            {{#link-to "profile" session.currentUser class="nav-link"}}
+        </div>
+        <div class="navbar-nav ml-auto">
+            {{#link-to "profile" session.currentUser class="nav-item nav-link"}}
               {{fa-icon "user-circle-o"}}
               {{session.currentUser.userName}}
             {{/link-to}}
-          </li>
-        </ul>
+        </div>
       </div>
     </nav>
   </div>
