@@ -7,6 +7,9 @@ const {
 
 export function dateTimeFormat(params) {
   let [value, format] = params;
+  if (!value) {
+    return null;
+  }
   if (!format) {
     format = 'ddd Do MMM YYYY h:mm a';
   }

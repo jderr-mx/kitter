@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 import { test } from 'qunit';
 import moduleForAcceptance from 'kitter/tests/helpers/module-for-acceptance';
 
@@ -11,6 +12,14 @@ test('visiting /', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/', 'go to the index page');
+  });
+
+  andThen(function() {
+    let el = find('button.close');
+    assert.equal(el.length, 1, 'Modal Visible');
+    el.click();
+    el = find('button.close');
+    assert.equal(el.length, 0, 'Modal Dismissed');
   });
 
   andThen(function() {
@@ -35,12 +44,32 @@ test('visiting /feed', function(assert) {
   });
 });
 
-test('visiting /profile', function(assert) {
+test('Visit user profile read only', function(assert) {
   server.loadFixtures();
   server.createList('post', 15);
   visit('/profile/1');
 
   andThen(function() {
-    assert.equal(currentURL(), '/profile/1', 'go to the profile page');
+    assert.equal(currentURL(), '/profile/1', 'Go to the profile page');
+  });
+
+  andThen(function() {
+    let el = find('.edit-user');
+    assert.equal(el.length, 0, 'Edit link does not exist');
+  });
+});
+
+test('Visit user profile current user', function(assert) {
+  server.loadFixtures();
+  server.createList('post', 15);
+  visit('/profile/6');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/profile/6', 'Go to the profile page');
+  });
+
+  andThen(function() {
+    let el = find('.edit-user');
+    assert.equal(el.length, 1, 'Edit link exists');
   });
 });

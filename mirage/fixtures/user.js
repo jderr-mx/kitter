@@ -26,7 +26,7 @@ export default [
     profilePic: faker.image.cats(null, null, true),
     firstName: 'Fuzz',
     lastName: 'Aldrin',
-    userName: 'ToInfinityAndMeow'
+    userName: 'SpaceKitteh'
   },
   {
     id: 5,

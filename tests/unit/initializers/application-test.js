@@ -3,10 +3,15 @@ import { initialize } from 'kitter/initializers/application';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
 
+const {
+  Application,
+  run
+} = Ember;
+
 module('Unit | Initializer | application', {
   beforeEach() {
-    Ember.run(() => {
-      this.application = Ember.Application.create();
+    run(() => {
+      this.application = Application.create();
       this.application.deferReadiness();
     });
   },

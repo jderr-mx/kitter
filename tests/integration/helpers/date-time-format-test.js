@@ -8,10 +8,10 @@ moduleForComponent('date-time-format', 'helper:date-time-format', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', '2001-01-01');
 
   this.render(hbs`{{date-time-format inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), 'Mon 1st Jan 2001 12:00 am');
 });
 

@@ -5,12 +5,12 @@
         <div class="card-block">
           <p>
             {{#unless readOnly}}
-            <h5 class="card-title clearfix">
+            <h5 class="card-title clearfix ">
               <span class="float-right">
                 {{#if isEditing}}
-                  <span class="text-muted">{{fa-icon "edit"}}Edit</span>
+                  <span class="text-muted edit-user-disabled">{{fa-icon "edit"}}Edit</span>
                 {{else}}
-                  <a href="#" {{action "editProfile"}}>{{fa-icon "edit"}}Edit</a>
+                  <a href="#" class="edit-user" {{action "editProfile"}}>{{fa-icon "edit"}}Edit</a>
                 {{/if}}
               </span>
             </h5>
@@ -18,28 +18,28 @@
           </p>
             <div class="clearfix">
             <div class="input-group">
-              <span class="input-group-addon">User Name:</span>
-              {{input class="form-control" value=user.userName readonly=true}}
+              <span class="input-group-addon">User Name: </span>
+              {{input class="form-control user-name" value=user.userName readonly=true}}
             </div>
             <br>
             <div class="input-group">
               <span class="input-group-addon">First Name:</span>
-              {{input class="form-control" value=user.firstName readonly=isReadOnly}}
+              {{input class="form-control first-name" value=user.firstName readonly=isReadOnly}}
             </div>
             <br>
             <div class="input-group">
               <span class="input-group-addon">Last Name:</span>
-              {{input class="form-control" value=user.lastName readonly=isReadOnly}}
+              {{input class="form-control last-name" value=user.lastName readonly=isReadOnly}}
             </div>
             <br>
             <div class="input-group">
               <span class="input-group-addon"># of posts:</span>
-              <span class="form-control" style="background-color: #e9ecef;">{{user.posts.length}}</span>
+              <span class="form-control user-posts" style="background-color: #e9ecef;">{{user.posts.length}}</span>
             </div>
             {{#if isEditing}}
               <div class="mt-2 float-right">
-                <button {{action "saveProfile"}} type="button" class="btn btn-outline-primary">Save</button>
-                <button {{action "cancelEditProfile"}} type="button" class="btn btn-outline-danger">Cancel</button>
+                <button {{action "saveProfile"}} type="button" class="btn btn-outline-primary save-button">Save</button>
+                <button {{action "cancelEditProfile"}} type="button" class="btn btn-outline-danger cancel-button">Cancel</button>
               </div>
             {{/if}}
             </div>
