@@ -1,3 +1,11 @@
+{{#if session.showModal}}
+  {{#my-modal
+    closeModal=(action 'dismissModal')
+    header="Welcome to Kitter"}}
+    <p>Remember the internetz iz serious bizness</p>
+    <p class="text">PS. no humans</p>
+{{/my-modal}}
+{{/if}}
 <div class="container" style="width: 40rem;">
   <div class="row" >
     <nav class="navbar navbar-expand navbar-light bg-light mb-5 w-100">

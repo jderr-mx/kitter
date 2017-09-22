@@ -27,18 +27,19 @@ export default function() {
 
   this.get('/posts', (schema, request) => {
     let posts = schema.all('post');
-    let  { sort, limit } = request.queryParams;
-    if (!sort) {
-      sort = 'dateTime';
-    }
-    let results  = posts.sort((a, b) => {
-      if (a[sort] === b[sort]) {
-        return 0;
-      } else if (a[sort] > b[sort]) {
+    let  { limit } = request.queryParams;
+
+    let results = posts.sort((a, b) => {
+      let dateA = new Date(a.dateTime);
+      let dateB = new Date(b.dateTime);
+      if (dateA > dateB) {
         return -1;
-      } else {
+      }
+
+      if (dateA < dateB) {
         return 1;
       }
+      return 0;
     });
 
     if (limit) {
@@ -50,7 +51,6 @@ export default function() {
         }
       });
     }
-
     return results;
   });
   this.patch('/posts/:id');

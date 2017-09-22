@@ -1,0 +1,14 @@
+{{#modal-dialog
+  clickOutsideToClose=true
+  targetAttachment="center"
+  translucentOverlay=true}}
+  <div>
+    <button {{action "closeAction"}} type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div>
+      <h4>{{header}}</h4>
+      {{yield}}
+    </div>
+  </div>
+{{/modal-dialog}}

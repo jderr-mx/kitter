@@ -5,5 +5,6 @@ const {
 } = Ember;
 
 export default Service.extend({
-  currentUser: null
+  currentUser: null,
+  showModal: true
 });
