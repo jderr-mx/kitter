@@ -36,9 +36,11 @@ test('visiting /feed', function(assert) {
 });
 
 test('visiting /profile', function(assert) {
-  visit('/profile');
+  server.loadFixtures();
+  server.createList('post', 15);
+  visit('/profile/1');
 
   andThen(function() {
-    assert.equal(currentURL(), '/profile', 'go to the profile page');
+    assert.equal(currentURL(), '/profile/1', 'go to the profile page');
   });
 });

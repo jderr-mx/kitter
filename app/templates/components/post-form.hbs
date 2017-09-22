@@ -1,0 +1,20 @@
+{{#if isEditing}}
+  <div class="card rounded mb-5 w-100" >
+    <div class="card-body">
+      <div class="card-block">
+        <p>You have {{charsRemaining}} characters remaining</p>
+        <p class="card-text">{{textarea value=postText rows=10 class="form-control"}}</p>
+          <div class="mt-2 float-right">
+            <button {{action "savePost"}} type="button" class="btn btn-outline-primary">Save</button>
+            <button {{action "cancelPost"}} type="button" class="btn btn-outline-danger">Cancel</button>
+          </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="clearfix">
+    <div class="row float-right mb-2">
+      <h3><span {{action 'createPost'}}>{{fa-icon "plus-circle"}}</span></h3>
+    </div>
+  </div>
+{{/if}}

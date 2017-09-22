@@ -12,7 +12,7 @@ const router = Router.extend({
 
 router.map(function() {
   this.route('/');
-  this.route('feed');
+  this.route('feed', function() {});
   this.route('profile', { path: '/profile/:id' });
 });
 

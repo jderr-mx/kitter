@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 const {
-  Component
+  Controller
 } = Ember;
-export default Component.extend({
+
+export default Controller.extend({
 });

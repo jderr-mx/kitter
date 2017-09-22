@@ -28,7 +28,7 @@ export default Component.extend({
       let result = get(this, 'saveAction')(get(this, 'user'));
       result.then(() => {
         set(this, 'isEditing', false);
-      }, (e) => {
+      }, () => {
         alert('There was an error saving!');
       });
     }

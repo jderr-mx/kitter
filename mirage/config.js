@@ -54,6 +54,8 @@ export default function() {
     return results;
   });
   this.patch('/posts/:id');
+  this.post('/posts');
+
   this.get('/users');
   this.get('/users/:id');
   this.patch('/users/:id');
