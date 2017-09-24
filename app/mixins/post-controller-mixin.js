@@ -2,10 +2,12 @@ import Ember from 'ember';
 
 const {
   Mixin,
-  get
+  get,
+  inject: { service }
 } = Ember;
 
 export default Mixin.create({
+  flashMessages: service(),
   actions: {
     savePost(postText) {
       let currentUser = get(this, 'session.currentUser');
@@ -16,6 +18,7 @@ export default Mixin.create({
       });
 
       post.save().then(() => {
+        get(this, 'flashMessages').success('New post saved!');
         this.send('refeshModel');
       });
     }
