@@ -1,14 +1,8 @@
 import Ember from 'ember';
 
 const {
-  Controller,
-  set
+  Controller
 } = Ember;
 
 export default Controller.extend({
-  actions: {
-    dismissModal() {
-      set(this, 'session.showModal', false);
-    }
-  }
 });

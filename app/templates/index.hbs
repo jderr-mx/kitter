@@ -1,3 +1,11 @@
+{{#if session.showModal}}
+  {{#my-modal
+    closeModal=(action 'dismissModal')
+    header="Welcome to Kitter"}}
+    <p>Remember the internetz iz serious bizness</p>
+    <p class="text-muted">PS. no humans</p>
+  {{/my-modal}}
+{{/if}}
 {{post-form saveAction=(action 'savePost')}}
 {{#each model as |post|}}
   {{post-card post=post}}
