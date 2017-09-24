@@ -42,11 +42,14 @@ test('it renders with edit option', function(assert) {
     userName: 'IamJohnDoe',
     firstName: 'John',
     lastName: 'Doe',
-    posts: [],
-    rollbackAttributes() {}
+    posts: []
   });
 
   set(this, 'testUser', user);
+  set(this, 'testUser.rollbackAttributes', function() {
+    set(this, 'firstName', 'John');
+    set(this, 'lastName', 'Doe');
+  });
   set(this, 'isReadOnly', false);
   this.on('mockSave', function(u) {
     RSVP.resolve(u);
@@ -66,16 +69,17 @@ test('it renders with edit option', function(assert) {
   assert.equal($('.edit-user-disabled').length, 1, 'Check that Edit link is disabled');
   assert.equal($('.save-button').length, 1, 'Check that "Save" button is rendered');
   assert.equal($('.cancel-button').length, 1, 'Check that "Cancel" button is rendered');
-  run(() => {
-    assert.step('Click cancel on user profile form');
-    $('.cancel-button').click();
-  });
+  assert.step('Click cancel on user profile form after setting new values');
+  this.set('testUser.firstName', 'Jim');
+  this.set('testUser.lastName', 'Smith');
+  $('.cancel-button').click();
+
+  assert.equal($('.first-name').val(), 'John', 'Check firstName');
+  assert.equal($('.last-name').val(), 'Doe', 'Check lastName');
   assert.equal($('.edit-user').length, 1, 'Check that Edit link is enabled');
-  run(() => {
-    $('.first-name').val('Jim');
-    $('.last-name').val('Smith');
-    $('.save-button').click();
-  });
+  this.set('testUser.firstName', 'Jim');
+  this.set('testUser.lastName', 'Smith');
+  $('.save-button').click();
   assert.equal($('.first-name').val(), 'Jim', 'Check firstName');
   assert.equal($('.last-name').val(), 'Smith', 'Check lastName');
 });
