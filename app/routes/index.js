@@ -2,10 +2,12 @@ import Ember from 'ember';
 
 const {
   Route,
-  get
+  get,
+  inject: { service }
 } = Ember;
 
 export default Route.extend({
+  i18n: service(),
   model() {
     return get(this, 'store').query('post', { include: 'user', sort: 'dateTime', limit: 5 });
   },

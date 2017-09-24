@@ -2,8 +2,8 @@
   {{#my-modal
     closeModal=(action 'dismissModal')
     header="Welcome to Kitter"}}
-    <p>Remember the internetz iz serious bizness</p>
-    <p class="text-muted">PS. no humans</p>
+    <p>{{t "welcome"}}</p>
+    <p class="text-muted">PS. {{t "no_humans"}}</p>
   {{/my-modal}}
 {{/if}}
 {{post-form saveAction=(action 'savePost')}}

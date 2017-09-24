@@ -24,6 +24,11 @@ module.exports = function(environment) {
     }
   };
 
+  // set default locale
+  ENV.i18n = {
+    defaultLocale: 'en'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
