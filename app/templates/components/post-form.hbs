@@ -3,7 +3,11 @@
     <div class="card-body">
       <div class="card-block">
         <p>You have {{charsRemaining}} characters remaining</p>
-        <p class="card-text">{{textarea value=postText rows=10 class="form-control"}}</p>
+        <div class="card-text">
+          {{#field-error model=this didValidate=didValidate fieldName="postText" value=postText}}
+            {{textarea value=postText rows=10 class="form-control"}}
+          {{/field-error}}
+        </div>
           <div class="mt-2 float-right">
             <button {{action "savePost"}} type="button" class="btn btn-outline-primary">Save</button>
             <button {{action "cancelPost"}} type="button" class="btn btn-outline-danger">Cancel</button>

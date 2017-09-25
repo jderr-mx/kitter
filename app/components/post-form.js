@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const {
   Component,
@@ -7,7 +8,20 @@ const {
   set
 } = Ember;
 
-export default Component.extend({
+const Validations = buildValidations({
+  postText: [
+    validator('presence', {
+      presence: true,
+      message: 'Posts requires text!'
+    }),
+    validator('length', {
+      max: 250
+    })
+  ]
+});
+
+export default Component.extend(Validations, {
+  didValidate: false,
   isEditing: false,
   maxPostLength: 250,
   postText: '',
@@ -17,19 +31,27 @@ export default Component.extend({
 
   actions: {
     createPost() {
+      set(this, 'didValidate', false);
       set(this, 'isEditing', true);
     },
 
     cancelPost() {
+      set(this, 'didValidate', false);
       set(this, 'isEditing', false);
+      set(this, 'postText', '');
     },
 
     savePost() {
-      let postText = get(this, 'postText');
-      set(this, 'isEditing', false);
-      set(this, 'postText', '');
-      get(this, 'saveAction')(postText);
-
+      set(this, 'didValidate', false);
+      this.validate().then(({ validations }) => {
+        set(this, 'didValidate', true);
+        if (get(validations, 'isValid')) {
+          let postText = get(this, 'postText');
+          set(this, 'isEditing', false);
+          set(this, 'postText', '');
+          get(this, 'saveAction')(postText);
+        }
+      });
     }
 
   }
