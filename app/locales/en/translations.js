@@ -9,5 +9,5 @@ export default {
   //
   // "key.with.interpolation": "Text with {{anInterpolation}}"
   'welcome': 'Remember the internetz iz serious bizness',
-  'no_humans': 'No Hoomans'
+  'no_humans': 'No Hoomans or mice'
 };

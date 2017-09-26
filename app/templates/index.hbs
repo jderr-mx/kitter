@@ -8,8 +8,8 @@
       <img src="splash.jpg"/>
     </div>
     {{#if setupControllerTask.isRunning}}
-      <div>
-        <h5>{{statusMessage}}</h5>
+      <div class="mt-2">
+        {{fa-icon "smile-o" spin=true}} <span class="float-right">{{statusMessage}}</span>
       </div>
     {{/if}}
   {{/my-modal}}
