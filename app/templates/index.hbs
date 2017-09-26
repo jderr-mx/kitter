@@ -1,7 +1,8 @@
-{{#if session.showModal}}
+{{#if setupControllerTask.isRunning}}
   {{#my-modal
     closeModal=(action 'dismissModal')
-    header="Welcome to Kitter"}}
+    header="Welcome to Kitter"
+    footer=statusMessage}}
     <p>{{t "welcome"}}</p>
     <p class="text-muted">PS. {{t "no_humans"}}</p>
   {{/my-modal}}

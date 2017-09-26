@@ -7,6 +7,9 @@ const {
 } = Ember;
 
 export default Controller.extend(PostControllerMixin, {
+  setupControllerTask: {},
+  statusMessage: '',
+
   actions: {
     dismissModal() {
       set(this, 'session.showModal', false);
