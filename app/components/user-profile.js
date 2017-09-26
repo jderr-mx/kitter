@@ -4,10 +4,12 @@ const {
   Component,
   computed,
   get,
+  inject: { service },
   set
 } = Ember;
 
 export default Component.extend({
+  flashMessages: service(),
   isEditing: false,
   isReadOnly: computed('isEditing', function() {
     if (get(this, 'isEditing')) {
@@ -28,8 +30,9 @@ export default Component.extend({
       let result = get(this, 'saveAction')(get(this, 'user'));
       result.then(() => {
         set(this, 'isEditing', false);
+        get(this, 'flashMessages').success('User profile saved!');
       }, () => {
-        alert('There was an error saving!');
+        get(this, 'flashMessages').danger('An error ocurred');
       });
     }
   }
