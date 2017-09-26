@@ -28,6 +28,41 @@ test('visiting /', function(assert) {
   });
 });
 
+test('visiting / and add a post', function(assert) {
+  server.loadFixtures();
+  server.createList('post', 4);
+
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/', 'go to the index page');
+  });
+
+  andThen(function() {
+    let el = find('button.close');
+    assert.equal(el.length, 1, 'Modal Visible');
+    el.click();
+    el = find('button.close');
+    assert.equal(el.length, 0, 'Modal Dismissed');
+  });
+
+  andThen(function() {
+    let el = find('.card');
+    assert.equal(el.length, 4, 'index only loads 4 cards');
+  });
+
+  andThen(function() {
+    click('i.fa.fa-plus-circle');
+    fillIn('.post-text', 'Hello!!!!');
+    click('.post-save-button');
+  });
+
+  andThen(function() {
+    let el = find('.card');
+    assert.equal(el.length, 5, 'index now has 5 cards');
+  });
+});
+
 test('visiting /feed', function(assert) {
   server.loadFixtures();
   server.createList('post', 15);
