@@ -1,10 +1,17 @@
-{{#if setupControllerTask.isRunning}}
+{{#if session.showModal}}
   {{#my-modal
     closeModal=(action 'dismissModal')
-    header="Welcome to Kitter"
-    footer=statusMessage}}
+    header="Welcome to Kitter"}}
     <p>{{t "welcome"}}</p>
     <p class="text-muted">PS. {{t "no_humans"}}</p>
+    <div>
+      <img src="splash.jpg"/>
+    </div>
+    {{#if setupControllerTask.isRunning}}
+      <div>
+        <h5>{{statusMessage}}</h5>
+      </div>
+    {{/if}}
   {{/my-modal}}
 {{/if}}
 {{post-form saveAction=(action 'savePost')}}
