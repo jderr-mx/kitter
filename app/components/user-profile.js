@@ -29,6 +29,7 @@ export default Component.extend({
     saveProfile() {
       let result = get(this, 'saveAction')(get(this, 'user'));
       result.then(() => {
+        set(this, 'user', result);
         set(this, 'isEditing', false);
         get(this, 'flashMessages').success('User profile saved!');
       }, () => {
