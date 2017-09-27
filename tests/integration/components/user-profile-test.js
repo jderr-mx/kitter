@@ -6,7 +6,6 @@ const {
   $,
   Object,
   RSVP,
-  run,
   set
 } = Ember;
 
@@ -45,6 +44,7 @@ test('it renders with edit option', function(assert) {
     posts: []
   });
 
+  // mock a test user and some functions and actions
   set(this, 'testUser', user);
   set(this, 'testUser.rollbackAttributes', function() {
     set(this, 'firstName', 'John');
@@ -61,10 +61,8 @@ test('it renders with edit option', function(assert) {
   assert.equal($('.last-name').val(), 'Doe', 'Check lastName');
   assert.equal($('.user-posts').text(), '0', 'Check post count');
   assert.equal($('.edit-user').length, 1, 'Check that Edit link is rendered');
-  run(() => {
-    assert.step('Click edit user link');
-    $('.edit-user').click();
-  });
+  assert.step('Click edit user link');
+  $('.edit-user').click();
 
   assert.equal($('.edit-user-disabled').length, 1, 'Check that Edit link is disabled');
   assert.equal($('.save-button').length, 1, 'Check that "Save" button is rendered');
