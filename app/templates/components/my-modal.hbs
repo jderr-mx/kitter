@@ -1,19 +1,21 @@
-{{#modal-dialog
-  clickOutsideToClose=true
-  targetAttachment="center"
-  translucentOverlay=true}}
-  <div>
-    <button {{action "closeAction"}} type="button" class="close" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+{{#if showModal}}
+  {{#modal-dialog
+    clickOutsideToClose=true
+    targetAttachment="center"
+    translucentOverlay=true}}
     <div>
-      <h4>{{header}}</h4>
-      {{yield}}
-    </div>
-    {{#if footer}}
+      <button {{action "dismissModal"}} type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <div>
-        <h5>{{footer}}</h5>
+        <h4>{{header}}</h4>
+        {{yield}}
       </div>
-    {{/if}}
-  </div>
-{{/modal-dialog}}
+      {{#if footer}}
+        <div>
+          <h5>{{footer}}</h5>
+        </div>
+      {{/if}}
+    </div>
+  {{/modal-dialog}}
+{{/if}}

@@ -1,14 +1,12 @@
 import Ember from 'ember';
 
-const {
-  Component,
-  get
-} = Ember;
+const { Component, set } = Ember;
 
 export default Component.extend({
-  actions: {
-    closeAction() {
-      get(this, 'closeModal')();
+    showModal: true,
+    actions: {
+        dismissModal() {
+            set(this, 'showModal', false);
+        }
     }
-  }
 });
